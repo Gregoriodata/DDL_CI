@@ -1,0 +1,116 @@
+use CI
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('CRMTB069_VISAO_EMPREGADOS')
+            and   type = 'U')
+   drop table CRMTB069_VISAO_EMPREGADOS
+go
+
+/*==============================================================*/
+/* Table: CRMTB069_VISAO_EMPREGADOS                             */
+/*==============================================================*/
+create table CRMTB069_VISAO_EMPREGADOS (
+   NU_MATRICULA         numeric              null,
+   NU_DV_MATRICULA      ntext                null,
+   NU_MATRICULA_C       ntext                null,
+   NO_EMPREGADO         ntext                null,
+   DT_DESLIGAMENTO      date                 null,
+   NU_UNIDADE_LOTACAO   numeric              null,
+   NO_UNIDADE_LOTACAO   ntext                null,
+   NU_FUNCAO_GRATIFICADA numeric              null,
+   NO_FUNCAO_GRATIFICADA ntext                null,
+   CO_CARGO             ntext                null,
+   NO_CARGO             ntext                null,
+   NU_CPF               numeric              null,
+   IC_CHEFE_UNIDADE     numeric              null,
+   IC_EV_CHEFE_UNIDADE  numeric              null,
+   CO_SISTEMA_ORIGEM    vachar(100)          null,
+   DH_POSICAO_LEGADO    date                 null,
+   DH_INGESTAO_SILDC    date                 null,
+   DH_INGESTAO_BASE_INTEGRADORA date                 null
+)
+go
+
+
+use CI
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('CRMTB070_VISAO_UNIDADES')
+            and   type = 'U')
+   drop table CRMTB070_VISAO_UNIDADES
+go
+
+/*==============================================================*/
+/* Table: CRMTB070_VISAO_UNIDADES                               */
+/*==============================================================*/
+create table CRMTB070_VISAO_UNIDADES (
+   NU_UNIDADE           numeric              null,
+   NU_DV_UNIDADE        numeric              null,
+   NO_UNIDADE           ntext                null,
+   SG_UNIDADE           ntext                null,
+   NU_UND_VINCULACAO    numeric              null,
+   NO_UND_VINCULACAO    ntext                null,
+   NU_CGC_UNIDADE       numeric              null,
+   NU_DV_CGC_UNIDADE    numeric              null,
+   IC_CGC_PROPRIO       bit                  null,
+   IC_ULTIMA_SITUACAO   ntext                null,
+   DT_INICIO            date                 null,
+   DT_FIM               date                 null,
+   NU_TIPO_UNIDADE      numeric              null,
+   NO_TIPO_UNIDADE      ntext                null,
+   NU_LOCALIDADE        numeric              null,
+   NO_LOCALIDADE        ntext                null,
+   SG_UF                ntext                null,
+   CO_SISTEMA_ORIGEM    varchar(100)         null,
+   DH_POSICAO_LEGADO    datetime             null,
+   DH_INGESTAO_SILDC    datetime             null,
+   DH_INGESTAO_BASE_INTEGRADORA datetime             null
+)
+go
+
+use CI
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('CRMTB068_VISAO_PRODUTOS')
+            and   type = 'U')
+   drop table CRMTB068_VISAO_PRODUTOS
+go
+
+/*==============================================================*/
+/* Table: CRMTB068_VISAO_PRODUTOS                               */
+/*==============================================================*/
+create table CRMTB068_VISAO_PRODUTOS (
+   NU_PRODUTO           NUMERIC              null,
+   NU_DV_PRODUTO        NUMERIC              null,
+   NO_PRODUTO           ntext                null,
+   NO_ABREVIADO_PRODUTO ntext                null,
+   NO_COMERCIAL_PRODUTO ntext                null,
+   SG_ULTIMA_SITUACAO   ntext                null,
+   NO_ULTIMA_SITUACAO   ntext                null,
+   NU_ENTIDADE          numeric              null,
+   NO_ENTIDADE          ntext                null,
+   NU_OPERACAO          numeric              null,
+   NO_OPERACAO          ntext                null,
+   NU_FONTE_RECURSO     numeric              null,
+   NO_FONTE_RECURSO     ntext                null,
+   NO_ABREVIADO_FONTE_RECURSO ntext                null,
+   NU_TIPO_FONTE_RECURSO numeric              null,
+   NO_TIPO_FONTE_RECURSO ntext                null,
+   SG_PUBLICO_ALVO      ntext                null,
+   NO_PUBLICO_ALVO      ntext                null,
+   NU_UNIDADE_GESTORA   numeric              null,
+   CO_SISTEMA_ORIGEM    varchar(100)         null,
+   DH_POSICAO_LEGADO    date                 null,
+   DH_INGESTAO_SILDC    date                 null,
+   DH_INGESTAO_BASE_INTEGRADORA date                 null
+)
+go
+
+
+
