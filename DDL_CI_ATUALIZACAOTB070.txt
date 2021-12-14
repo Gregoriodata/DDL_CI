@@ -1,0 +1,33 @@
+use CI
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('CRMTB070_VISAO_UNIDADES')
+            and   type = 'U')
+   drop table CRMTB070_VISAO_UNIDADES
+go
+
+/*==============================================================*/
+/* Table: CRMTB070_VISAO_UNIDADES                               */
+/*==============================================================*/
+create table CRMTB070_VISAO_UNIDADES (
+   NU_UNIDADE           numeric              null,
+   NU_DV_UNIDADE        numeric              null,
+   NO_UNIDADE           ntext                null,
+   SG_UNIDADE           ntext                null,
+   NU_UND_VINCULACAO    numeric              null,
+   NO_UND_VINCULACAO    ntext                null,
+   NU_CGC_UNIDADE       numeric              null,
+   NU_DV_CGC_UNIDADE    numeric              null,
+   IC_CGC_PROPRIO       bit                  null,
+   IC_ULTIMA_SITUACAO   ntext                null,
+   DT_INICIO            date                 null,
+   DT_FIM               date                 null,
+   NU_TIPO_UNIDADE      numeric              null,
+   NO_TIPO_UNIDADE      ntext                null,
+   NU_LOCALIDADE        numeric              null,
+   NO_LOCALIDADE        ntext                null,
+   SG_UF                ntext                null
+)
+go
