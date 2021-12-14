@@ -1,0 +1,34 @@
+use CI
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('CRMTB069_VISAO_EMPREGADOS')
+            and   type = 'U')
+   drop table CRMTB069_VISAO_EMPREGADOS
+go
+
+/*==============================================================*/
+/* Table: CRMTB069_VISAO_EMPREGADOS                             */
+/*==============================================================*/
+create table CRMTB069_VISAO_EMPREGADOS (
+   NU_MATRICULA         numeric              null,
+   NU_DV_MATRICULA      ntext                null,
+   NU_MATRICULA_C       ntext                null,
+   NO_EMPREGADO         ntext                null,
+   DT_DESLIGAMENTO      date                 null,
+   NU_UNIDADE_LOTACAO   numeric              null,
+   NO_UNIDADE_LOTACAO   ntext                null,
+   NU_FUNCAO_GRATIFICADA numeric              null,
+   NO_FUNCAO_GRATIFICADA ntext                null,
+   CO_CARGO             ntext                null,
+   NO_CARGO             ntext                null,
+   NU_CPF               numeric              null,
+   IC_CHEFE_UNIDADE     numeric              null,
+   IC_EV_CHEFE_UNIDADE  numeric              null,
+   CO_SISTEMA_ORIGEM    varchar(100)         null,
+   DH_POSICAO_LEGADO    date                 null,
+   DH_INGESTAO_SILDC    date                 null,
+   DH_INGESTAO_BASE_INTEGRADORA date                 null
+)
+go
