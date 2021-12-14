@@ -1,0 +1,456 @@
+use CI
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('CRMTB069_VISAO_EMPREGADOS')
+            and   type = 'U')
+   drop table CRMTB069_VISAO_EMPREGADOS
+go
+
+/*==============================================================*/
+/* Table: CRMTB069_VISAO_EMPREGADOS                             */
+/*==============================================================*/
+create table CRMTB069_VISAO_EMPREGADOS (
+   NU_MATRICULA         numeric              null,
+   NU_DV_MATRICULA      ntext                null,
+   NU_MATRICULA_C       ntext                null,
+   NO_EMPREGADO         ntext                null,
+   DT_DESLIGAMENTO      date                 null,
+   NU_UNIDADE_LOTACAO   numeric              null,
+   NO_UNIDADE_LOTACAO   ntext                null,
+   NU_FUNCAO_GRATIFICADA numeric              null,
+   NO_FUNCAO_GRATIFICADA ntext                null,
+   CO_CARGO             ntext                null,
+   NO_CARGO             ntext                null,
+   NU_CPF               numeric              null,
+   IC_CHEFE_UNIDADE     numeric              null,
+   IC_EV_CHEFE_UNIDADE  numeric              null
+)
+go
+
+use CI
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('CRMTB070_VISAO_UNIDADES')
+            and   type = 'U')
+   drop table CRMTB070_VISAO_UNIDADES
+go
+
+/*==============================================================*/
+/* Table: CRMTB070_VISAO_UNIDADES                               */
+/*==============================================================*/
+create table CRMTB070_VISAO_UNIDADES (
+   NU_UNIDADE           numeric              null,
+   NU_DV_UNIDADE        numeric              null,
+   NO_UNIDADE           ntext                null,
+   SG_UNIDADE           ntext                null,
+   NU_UND_VINCULACAO    numeric              null,
+   NO_UND_VINCULACAO    ntext                null,
+   NU_CGC_UNIDADE       numeric              null,
+   NU_DV_CGC_UNIDADE    numeric              null,
+   IC_CGC_PROPRIO       boleano              null,
+   IC_ULTIMA_SITUACAO   ntext                null,
+   DT_INICIO            date                 null,
+   DT_FIM               date                 null,
+   NU_TIPO_UNIDADE      numeric              null,
+   NO_TIPO_UNIDADE      ntext                null,
+   NU_LOCALIDADE        numeric              null,
+   NO_LOCALIDADE        ntext                null,
+   SG_UF                ntext                null
+)
+go
+use CI
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('CRMTB068_VISAO_PRODUTOS')
+            and   type = 'U')
+   drop table CRMTB068_VISAO_PRODUTOS
+go
+
+/*==============================================================*/
+/* Table: CRMTB068_VISAO_PRODUTOS                               */
+/*==============================================================*/
+create table CRMTB068_VISAO_PRODUTOS (
+   NU_PRODUTO           NUMERIC              null,
+   NU_DV_PRODUTO        NUMERIC              null,
+   NO_PRODUTO           ntext                null,
+   NO_ABREVIADO_PRODUTO ntext                null,
+   NO_COMERCIAL_PRODUTO ntext                null,
+   SG_ULTIMA_SITUACAO   ntext                null,
+   NO_ULTIMA_SITUACAO   ntext                null,
+   NU_ENTIDADE          numeric              null,
+   NO_ENTIDADE          ntext                null,
+   NU_OPERACAO          numeric              null,
+   NO_OPERACAO          ntext                null,
+   NU_FONTE_RECURSO     numeric              null,
+   NO_FONTE_RECURSO     ntext                null,
+   NO_ABREVIADO_FONTE_RECURSO ntext                null,
+   NU_TIPO_FONTE_RECURSO numeric              null,
+   NO_TIPO_FONTE_RECURSO ntext                null,
+   SG_PUBLICO_ALVO      ntext                null,
+   NO_PUBLICO_ALVO      ntext                null,
+   NU_UNIDADE_GESTORA   numeric              null
+)
+go
+
+use CI
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('DM.CRMTB005_CONTRATO_CARTAO')
+            and   type = 'U')
+   drop table DM.CRMTB005_CONTRATO_CARTAO
+go
+
+/*==============================================================*/
+/* Table: CRMTB005_CONTRATO_CARTAO                              */
+/*==============================================================*/
+create table DM.CRMTB005_CONTRATO_CARTAO (
+   NU_CLIENTE           NUMERIC(13)          not null,
+   CO_CHPRAS            CHAR(16)             not null,
+   NU_CARTAO_CLIENTE    NUMERIC(12)
+           not null,
+   NU_CPF_CNPJ          NUMERIC(14)          null,
+   NU_TIPO_PESSOA       SMALLINT             null,
+   NU_SITUACAO_CONTA_CREDITO NUMERIC(2)           null,
+   IC_TITULARIDADE      CHAR(2)
+               null,
+   NU_CPF_TITULAR       NUMERIC(14)          null,
+   QT_CARTAO_ADICIONAL  NUMERIC(12)
+           null,
+   NO_CARTAO            VARCHAR(35)
+           null,
+   NU_BANDEIRA_CARTAO   NUMERIC(2)
+            null,
+   IC_VARIANTE_CARTAO   CHAR(2)
+               null,
+   DT_EMISSAO_CARTAO    DATE
+                  null,
+   DT_ATIVACAO_CARTAO   DATE
+                  null,
+   NU_VALIDADE_CARTAO   NUMERIC(6)
+            null,
+   DD_VENCIMENTO_FATURA SMALLINT
+              null,
+   VR_LIMITE_CREDITO_CONTRATADO DECIMAL(19,2)        null,
+   VR_LIMITE_SAQUE_CONTRATADO DECIMAL(19,2)        null,
+   DT_ALTERACAO_LIMITE  DATE
+                  null,
+   VR_LIMITE_CREDITO_UTILIZADO DECIMAL(19,2)        null,
+   VR_LIMITE_SAQUE_UTILIZADO DECIMAL(19,2)        null,
+   VR_LIMITE_CREDITO_DISPONIVEL DECIMAL(19,2)        null,
+   VR_LIMITE_SAQUE_DISPONIVEL DECIMAL(19,2)        null,
+   IC_SITUACAO_CARTAO   CHAR(2)              null,
+   DT_SITUACAO_CARTAO   DATE                 null,
+   VR_ANUIDADE          DECIMAL(19,2)        null,
+   CO_ANUIDADE          VARCHAR(20)          null,
+   VR_ANUIDADE_TITULAR  DECIMAL(19,2)        null,
+   VR_ANUIDADE_ADICIONAL DECIMAL(19,2)        null,
+   PC_DESCONTO_ANUIDADE_TITULAR DECIMAL(19,2)        null,
+   PC_DESCONTO_ANUIDADE_ADICIONAL DECIMAL(19,2)        null,
+   PZ_BENEFICIO_TITULAR SMALLINT             null,
+   PZ_BENEFICIO_ADICIONAL SMALLINT             null,
+   VR_DESCONTO_ANUIDADE_TITULAR DECIMAL(19,2)        null,
+   VR_DESCONTO_ANUIDADE_ADICIONAL DECIMAL(19,2)        null,
+   QT_PARCELA_ANUIDADE  SMALLINT             null,
+   DT_INICIO_VIGENCIA_ANUIDADE DATE                 null,
+   DT_FIM_VIGENCIA_ANUIDADE DATE                 null,
+   IC_AUTORIZACAO_SMS   CHAR(1)              null,
+   CO_SISTEMA_ORIGEM    VARCHAR(100)         null,
+   DH_POSICAO_LEGADO    DATETIME             null,
+   DH_INGESTAO_SILDC    DATETIME             null,
+   DH_INGESTAO_BASE_INTEGRADORA DATETIME             null,
+   CO_MOTIVO_CANCELAMENTO CHAR(2)              null,
+   DT_INICIO_INADIMPLENCIA DATE                 null,
+   DE_SITUACAO_CONTA_CREDITO VARCHAR(100)         null,
+   DE_TIPO_PESSOA       VARCHAR(50)          null,
+   DE_MOTIVO_CANCELAMENTO CHAR(20)             null,
+   DE_TITULARIDADE      VARCHAR(40)          null,
+   NO_BANDEIRA          VARCHAR(30)          null,
+   NO_SITUACAO_CARTAO   VARCHAR(50)          null,
+   NO_VARIANTE_CARTAO   CHAR(10)             null,
+   VR_INADIMPLENCIA     DECIMAL(19,2)        null,
+   VR_LIMITE_ATUALIZADO DECIMAL(19,2)        null,
+   VR_LIMITE_ANTERIOR   DECIMAL(19,2)        null,
+   NU_COCLI             CHAR(8)              null,
+   constraint PK_CRMTB005 primary key (NU_CLIENTE, CO_CHPRAS, NU_CARTAO_CLIENTE)
+)
+go
+
+use CI
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('DM.CRMTB006_FATURA_CARTAO')
+            and   type = 'U')
+   drop table DM.CRMTB006_FATURA_CARTAO
+go
+
+/*==============================================================*/
+/* Table: CRMTB006_FATURA_CARTAO                                */
+/*==============================================================*/
+create table DM.CRMTB006_FATURA_CARTAO (
+   NU_CLIENTE           NUMERIC(13)          not null,
+   CO_CHPRAS            CHAR(16)             not null,
+   NU_CARTAO_CLIENTE    NUMERIC(12)
+           not null,
+   NU_FATURA            INT                  not null,
+   NU_CPF_CNPJ          NUMERIC(14)          null,
+   NU_TIPO_PESSOA       SMALLINT             null,
+   NO_CARTAO            VARCHAR(35)
+           null,
+   DT_VENCIMENTO_FATURA DATE                 null,
+   VR_FATURA            DECIMAL(19,2)
+         null,
+   IC_SITUACAO_FATURA   NUMERIC(2)           null,
+   VR_PAGO_FATURA       DECIMAL(19,2)        null,
+   IC_PAGAMENTO_MINIMO  CHAR(2)              null,
+   VR_PAGAMENTO_MINIMO  DECIMAL(19,2)        null,
+   NU_DIA_ATRASO        NUMERIC(2)           null,
+   VR_FATURA_ANTERIOR   DECIMAL(19,2)        null,
+   VR_PAGO_FATURA_ANTERIOR DECIMAL(19,2)        null,
+   CO_PERFIL_GASTO      CHAR(10)             null,
+   NO_GRUPO_DEMONSTRATIVO VARCHAR(50)          null,
+   CO_SISTEMA_ORIGEM    VARCHAR(100)         null,
+   DH_POSICAO_LEGADO    DATETIME             null,
+   DH_INGESTAO_SILDC    DATETIME             null,
+   DH_INGESTAO_BASE_INTEGRADORA DATETIME             null,
+   DE_SITUACAO_FATURA   VARCHAR(50)          null,
+   DE_PERFIL_GASTO      VARCHAR(100)         null,
+   NO_DIA_ATRASO        VARCHAR(50)          null,
+   QT_TRANSACAO_A_VISTA_TITULAR NUMERIC(9)           null,
+   QT_SAQUE             NUMERIC(8)           null,
+   QT_TRANSACAO_A_VISTA NUMERIC(9)           null,
+   QT_TRANSACAO_PARCELADO NUMERIC(9)           null,
+   QT_TRNSO_PARCELADO_ADICIONAL NUMERIC(9)           null,
+   VR_CREDITO_A_VISTA   DECIMAL(19,2)        null,
+   VR_CREDITO_A_VISTA_TITULAR DECIMAL(19,2)        null,
+   VR_CREDITO_PARCELADO DECIMAL(19,2)        null,
+   VR_CREDITO_PARCELADO_ADICIONAL DECIMAL(19,2)        null,
+   VR_DIVIDA            DECIMAL(19,2)        null,
+   VR_IOF               DECIMAL(19,2)        null,
+   VR_JUROS             DECIMAL(19,2)        null,
+   VR_MORA              DECIMAL(19,2)        null,
+   VR_SAQUE             DECIMAL(19,2)        null,
+   NU_COCLI             CHAR(8)              null,
+   constraint PK_CRMTB006 primary key (NU_CLIENTE, CO_CHPRAS, NU_CARTAO_CLIENTE, NU_FATURA)
+)
+go
+
+use CI
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('DM.CRMTB007_PROPOSTA_CARTAO')
+            and   type = 'U')
+   drop table DM.CRMTB007_PROPOSTA_CARTAO
+go
+
+/*==============================================================*/
+/* Table: CRMTB007_PROPOSTA_CARTAO                              */
+/*==============================================================*/
+create table DM.CRMTB007_PROPOSTA_CARTAO (
+   NU_CPF_CNPJ          NUMERIC(14)          null,
+   NU_TIPO_PESSOA       SMALLINT             null,
+   DE_TIPO_PESSOA       VARCHAR(50)          null,
+   NU_PROPOSTA_CARTAO   INT
+                   not null,
+   DT_PROPOSTA_CARTAO   DATE                 null,
+   DT_VALIDADE_PROPOSTA_CARTAO DATE                 null,
+   VR_LIMITE_PROPOSTA_CARTAO DECIMAL(17,2)
+         null,
+   NU_AVALIACAO_SIRIC   NUMERIC(10)
+           null,
+   IC_SITUACAO_PROPOSTA CHAR(5)              null,
+   DE_SITUACAO_PROPOSTA_CARTAO CHAR(40)
+              null,
+   IC_CANAL_VENDA       CHAR(5)              null,
+   NO_CANAL_VENDA       CHAR(40)             null,
+   CO_SISTEMA_ORIGEM    VARCHAR(100)         null,
+   DH_POSICAO_LEGADO    DATETIME             null,
+   DH_INGESTAO_SILDC    DATETIME             null,
+   DH_INGESTAO_BASE_INTEGRADORA DATETIME             null,
+   NU_COCLI             char(8)              null,
+   constraint PK_CRMTB007 primary key (NU_PROPOSTA_CARTAO)
+)
+go
+
+use CI
+go
+
+if exists (select 1
+            from  sysobjects
+           where  id = object_id('DM.CRMTB014_CONTRATO_CREDITO')
+            and   type = 'U')
+   drop table DM.CRMTB014_CONTRATO_CREDITO
+go
+
+/*==============================================================*/
+/* Table: CRMTB014_CONTRATO_CREDITO                             */
+/*==============================================================*/
+create table DM.CRMTB014_CONTRATO_CREDITO (
+   NU_CLIENTE           NUMERIC(13)          not null,
+   NU_CPF_CNPJ          NUMERIC(14)          null,
+   NU_TIPO_PESSOA       SMALLINT             null,
+   NU_CONTRATO          CHAR(20)             not null,
+   NU_PRODUTO           SMALLINT             null,
+   CO_MODALIDADE_OPERACAO VARCHAR(3)
+            null,
+   CO_ORIGEM_RECURSO    CHAR(12)             null,
+   IC_TIPO_CONTRATO     CHAR(2)              null,
+   NU_UNIDADE_CONTRATO  SMALLINT             null,
+   DT_CONTRATACAO_EMPRESTIMO DATE                 null,
+   VR_CONTRATO_BRUTO    DECIMAL(17,2)
+         null,
+   VR_CONTRATO_LIQUIDO  DECIMAL(17,2)
+         null,
+   NU_LIMITE            INT                  null,
+   VR_LMTE_HABILITADO   DECIMAL(15,2)
+         null,
+   PZ_CONTRATO          SMALLINT
+              null,
+   CO_PRAZO_VENCIMENTO  VARCHAR(5)
+            null,
+   CO_UNIDADE_TEMPO_CONTRATO VARCHAR(5)           null,
+   CO_SITUACAO_CONTRATO CHAR(1)
+               null,
+   DT_VENCIMENTO_CONTRATO DATE
+                  null,
+   IC_AVERBACAO         CHAR(1)              null,
+   NU_CONVENENTE        NUMERIC(10)          null,
+   NU_CNPJ_CONVENENTE   NUMERIC(14)          null,
+   CO_SITUACAO_CONVENENTE CHAR(5)              null,
+   PZ_MAXIMO_CONTRATACAO SMALLINT             null,
+   NU_CANAL_CONCESSAO   SMALLINT             null,
+   DT_ADMISSAO_CARENCIA DATE                 null,
+   PZ_MAXIMO_CARENCIA   SMALLINT             null,
+   NU_CONTA_DEBITO      DECIMAL(9)           null,
+   NU_PRODUTO_CONTA_DEBITO_NSGD DECIMAL(10)          null,
+   PZ_REMANESCENTE      DECIMAL(3)
+            null,
+   PC_TAXA_JURO_CONTRATO DECIMAL(9,5)
+          null,
+   PC_TAXA_JUROS_ATUAL  DECIMAL(5,2)         null,
+   PC_TAXA_JUROS_ANUAL  DECIMAL(5,2)         null,
+   VR_PARCELA_CONTRATADA DECIMAL(17,2)
+         null,
+   DT_VENCIMENTO_PRIMEIRA_PARCELA DATE
+                  null,
+   QT_PRESTACAO_PAGA    SMALLINT             null,
+   VR_SALDO_DEVEDOR     DECIMAL(17,2)
+         null,
+   DT_SALDO_DEVEDOR     DATE
+                  null,
+   CO_GARANTIA          CHAR(6)              null,
+   DT_VALOR_INICIAL_GARANTIA DATE
+                  null,
+   VR_INICIAL_GARANTIA  DECIMAL(17,2)
+         null,
+   IC_SEGURO_CONTRATO   CHAR(1)              null,
+   CO_TIPO_SEGURO       CHAR(14)
+              null,
+   VR_SEGURO_GARANTIA   DECIMAL(17,2)
+         null,
+   NU_CONTA_CREDITO_SIDEC DECIMAL(9)           null,
+   NU_PRODUTO_CONTA_CREDITO_NSGD DECIMAL(8)           null,
+   IC_CARENCIA          CHAR(1)              null,
+   DT_INICIO_CARENCIA   DATE                 null,
+   PZ_CARENCIA_CONTRATO SMALLINT             null,
+   QT_RENOVACAO         SMALLINT             null,
+   NO_INSTITUICAO_CONTRATO VARCHAR(100)         null,
+   IC_SITUACAO_AVERBACAO CHAR(1)              null,
+   NO_SITUACAO_AVERBACAO VARCHAR(100)         null,
+   VR_LIBERADO          DECIMAL(17,2)
+         null,
+   DT_LIBERACAO_CREDITO DATE                 null,
+   CO_INSTITUICAO_ORIGINAL INT                  null,
+   NO_CONVENENTE        VARCHAR(100)         null,
+   CO_GRUPO_CONVENENTE  NUMERIC(6)           null,
+   NO_GRUPO_CONVENENTE  VARCHAR(100)         null,
+   IC_SITUACAO_CONVENENTE NUMERIC(5)           null,
+   NO_SITUACAO_CONVENENTE VARCHAR(100)         null,
+   CO_CANAL_CONCESSAO   INT                  null,
+   NO_CANAL_CONCESSAO   VARCHAR(100)         null,
+   DE_ADMISSAO_CARENCIA VARCHAR(100)         null,
+   PC_TAXA_FAIXA_A      DECIMAL(9,5)         null,
+   PC_TAXA_FAIXA_B      DECIMAL(9,5)         null,
+   PC_TAXA_FAIXA_C      DECIMAL(9,5)         null,
+   DT_INICIO_TAXA_CONVENENTE DATE                 null,
+   DT_FIM_TAXA_CONVENENTE DATE                 null,
+   TS_ATUALIZACAO       TIMESTAMP            null,
+   NO_TIPO_PESSOA       VARCHAR(250)         null,
+   NO_PRODUTO           VARCHAR(20)          null,
+   NO_MODALIDADE_OPERACAO CHAR(50)             null,
+   VR_LIMITE_CREDITO    DECIMAL(19,2)        null,
+   NU_CLIENTE_CREDITO   NUMERIC(13)          null,
+   NU_TIPO_SITUACAO_LIMITE SMALLINT             null,
+   DE_TIPO_SITUACAO_LIMITE VARCHAR(20)          null,
+   DT_VALIDADE_LIMITE   DATE                 null,
+   DE_SITUACAO_CONTRATO VARCHAR(100)         null,
+   NU_AGENCIA_CONTA_DEBITO NUMERIC(4)           null,
+   NU_OPERACAO_CONTA_DEBITO SMALLINT             null,
+   NU_CONTA_DEBITO_NSGD DECIMAL(9)           null,
+   QT_RENEGOCIACAO_CONTRATO SMALLINT             null,
+   QT_PRAZO_REMANECENTE SMALLINT             null,
+   NU_PERIODICIDADE_TAXA_JUROS SMALLINT             null,
+   NO_PERIODICIDADE_TAXA_JUROS VARCHAR(20)          null,
+   CO_INDEXADOR         CHAR(2)              null,
+   PC_INDEXADOR         DECIMAL(11,7)        null,
+   VR_JUROS_OPERACAO    DECIMAL(15,2)        null,
+   PC_TAXA_LIMITE_ENCARGO DECIMAL(5,2)         null,
+   PC_TAXA_CAIXA        DECIMAL(5,2)         null,
+   PC_TAXA_BNDES        DECIMAL(5,2)         null,
+   VR_CONTRATADO_UTILIZADO DECIMAL(15, 2)       null,
+   VR_CONTRATADO_NAO_UTILIZADO DECIMAL(15, 2)       null,
+   CO_UNDDE_TEMPO_PRAZO_CARENCIA VARCHAR(5)           null,
+   VR_GARANTIA          DECIMAL(15,2)        null,
+   CO_TIPO_GARANTIA     CHAR(4)              null,
+   DE_TIPO_GARANTIA     VARCHAR(100)         null,
+   NU_CPF_CNPJ_AVALISTA NUMERIC(14)          null,
+   NU_TIPO_PESSOA_AVALISTA SMALLINT             null,
+   DT_INICIO_AMORTIZACAO DATE                 null,
+   PZ_AMORTIZACAO_CONTRATO SMALLINT             null,
+   NU_PERIODICIDADE_AMORTIZACAO SMALLINT             null,
+   NO_TIPO_LIQUIDACAO   VARCHAR(250)         null,
+   CO_AVALIACAO_SIRIC   DECIMAL(10)          null,
+   CO_CONCEITO_RATING_OPERACAO VARCHAR(3)           null,
+   DE_TIPO_CRITERIO_JULGAMENTO VARCHAR(100)         null,
+   QT_PARCELA_ATRASO    SMALLINT             null,
+   QT_DIA_ATRASO        SMALLINT             null,
+   DT_INSCRICAO_INADIMPLENCIA DATE                 null,
+   VR_LANCAMENTO_CREDITO_ATRASO DECIMAL(15,2)        null,
+   VR_PREJUIZO          DECIMAL(17,2)
+         null,
+   NU_AGENCIA_CONTA_CREDITO NUMERIC(4)           null,
+   NU_OPERACAO_CONTA_CREDITO SMALLINT             null,
+   NU_CONTA_CREDITO     DECIMAL(9)           null,
+   NU_CONTA_CREDITO_NSGD DECIMAL(9)           null,
+   DT_LIQUIDACAO_CONTRATO DATE                 null,
+   DT_SITUACAO_CONTRATO DATE                 null,
+   VR_SITUACAO_CONTRATO DECIMAL(17,2)
+         null,
+   QT_PARCELA_REMANESCENTE SMALLINT             null,
+   NU_AGENCIA_COBRANCA  NUMERIC(4)           null,
+   QT_PARCELA_CARENCIA  SMALLINT             null,
+   IC_TIPO_INFORMACAO   CHAR(1)              null,
+   CO_SISTEMA_ORIGEM    VARCHAR(100)         null,
+   DH_POSICAO_LEGADO    DATETIME             null,
+   DH_INGESTAO_SILDC    DATETIME             null,
+   DH_INGESTAO_BASE_INTEGRADORA DATETIME             null,
+   NU_COCLI             CHAR(8)              null,
+   constraint PK_CRMTB014 primary key (NU_CLIENTE, NU_CONTRATO)
+)
+go
+
+
+
+
+
